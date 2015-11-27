@@ -1,0 +1,28 @@
+{
+  "name": "chibiprint",
+  "version": "1.0.0",
+  "description": "A really tiny template engine for Node.js.",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "mocha tests/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/iiyo/chibiprint.git"
+  },
+  "author": "J. Steinbeck <mail@steinbeck.it> (https://steinbeck.it)",
+  "license": "BSD-3-Clause",
+  "bugs": {
+    "url": "https://github.com/iiyo/chibiprint/issues"
+  },
+  "homepage": "https://github.com/iiyo/chibiprint#readme",
+  "dependencies": {
+    "enjoy-js": "^15.11.1-preview.1511202107"
+  },
+  "bin": {
+    "chibiprint": "./bin/cli.js"
+  }
+}

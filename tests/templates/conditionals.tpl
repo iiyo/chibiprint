@@ -1,0 +1,1 @@
+{$foo}{!? $renderItems list $items content.tpl}

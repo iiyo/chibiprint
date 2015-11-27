@@ -1,0 +1,1 @@
+bar {$bar} {!include include1.tpl}

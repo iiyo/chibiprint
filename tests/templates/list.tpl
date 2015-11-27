@@ -1,0 +1,1 @@
+{!list $items item.tpl}
