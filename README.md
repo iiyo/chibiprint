@@ -1,11 +1,57 @@
 # ChibiPrint
 
-A really tiny template engine for Node.js.
+A really tiny template engine for Node.js. It takes a template file and a JSON data file and produces a rendered string. ChibiPrint templates can include other template files, too!
 
-## Usage
+## Installation
+
+    npm install -g chibiprint
+
+## Using ChibiPrint from the command line
+
+Printing the rendered output:
+
+    chibiprint template.html data.json
+
+Writing the output to a file:
+
+    chibiprint template.html data.json output.html
+
+## Using ChibiPrint as a JavaScript module
+
+```javascript
+var fs = require("fs");
+var render = require("chibiprint").render;
+var data = JSON.parse(fs.readFileSync("data.json"));
+
+fs.writeFileSync("output.html", render("template.html", data));
+```
+
+## Template example
+
+File data.json:
+
+```json
+{
+    "title": "My cool blog",
+    "posts": [
+        {
+            "title": "Today I ate noodles",
+            "text": "They were really delicious. I can recommend it.",
+            "tags": [
+                "noodles", "delicious"
+            ]
+        },
+        {
+            "title": "Went to see Iron Maiden",
+            "text": "Best. Concert. Ever. 'Nough said."
+        }
+    ]
+}
+```
+
+File template.html:
 
 ```html
-<!-- index.html -->
 {!include header.html}
         <h1>{$title}</h1>
         
@@ -16,9 +62,10 @@ A really tiny template engine for Node.js.
 </html>
 ```
 
+File header.html: 
+
 ```html
 <!DOCTYPE html>
-<!-- header.html -->
 <html>
     <header>
         <title>{$title}</title>
@@ -26,8 +73,9 @@ A really tiny template engine for Node.js.
     <body>
 ```
 
+File post.html:
+
 ```html
-<!-- post.html -->
             <div class="post">
                 <h2>{$title}</h2>
                 <div class="body">
@@ -37,40 +85,18 @@ A really tiny template engine for Node.js.
             </div>
 ```
 
+File tags.html:
+
 ```html
-<!-- tags.html -->
                 <div class="tags">
                     {!list $tags tag.html}
                 </div>
 ```
 
+File tag.html:
+
 ```html
-<!-- tag.html -->
                     <a class="tag" href="tag/{$content}/">{$content}</a>
-```
-
-```javascript
-var fs = require("fs");
-var render = require("chibiprint").render;
-
-var data = {
-    title: "My cool blog",
-    posts: [
-        {
-            title: "Today I ate noodles",
-            text: "They were really delicious. I can recommend it.",
-            tags: [
-                "noodles", "delicious"
-            ]
-        },
-        {
-            title: "Went to see Iron Maiden",
-            text: "Best. Concert. Ever. 'Nough said."
-        }
-    ]
-};
-
-fs.writeFileSync("out/index.html", render("index.html", data));
 ```
 
 ## Syntax

@@ -1,6 +1,6 @@
 {
   "name": "chibiprint",
-  "version": "1.0.0",
+  "version": "1.0.0-final.1511271807",
   "description": "A really tiny template engine for Node.js.",
   "main": "index.js",
   "directories": {
