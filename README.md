@@ -108,6 +108,9 @@ render.commands["hello-world"] = function (base, vars /*, arg1, ..., argN */) {
     // vars is an object containing the available variables
     
     // commands can have any number of optional arguments
+    
+    // commands must return a string:
+    return "Hello world!";
 };
 
 ```
