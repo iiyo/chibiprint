@@ -1,5 +1,6 @@
 var fs = require("fs");
 var enjoy = require("enjoy-js");
+var format = require("vrep").create("{$", "}");
 
 var reduce = enjoy.reduce;
 var each = enjoy.each;
@@ -9,16 +10,6 @@ var isObject = enjoy.isObject;
 function engine () {
     
     var commands = {};
-    
-    function insertVars (template, vars) {
-        return reduce(vars, function (tpl, value, key) {
-            return insertVar(tpl, key, value);
-        }, template);
-    }
-    
-    function insertVar (template, key, value) {
-        return template.split("{$" + key + "}").join("" + value);
-    }
     
     function render (path, env) {
         
@@ -32,7 +23,7 @@ function engine () {
         
         var template = "" + fs.readFileSync(base + path);
         
-        template = insertVars(template, vars);
+        template = format(template, vars);
         template = runCommands(base, vars, template);
         
         // Remove unknown variables:

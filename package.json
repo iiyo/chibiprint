@@ -1,6 +1,6 @@
 {
   "name": "chibiprint",
-  "version": "1.0.0-final.1511271807",
+  "version": "1.0.1-final.1512151633",
   "description": "A really tiny template engine for Node.js.",
   "main": "index.js",
   "directories": {
@@ -20,7 +20,8 @@
   },
   "homepage": "https://github.com/iiyo/chibiprint#readme",
   "dependencies": {
-    "enjoy-js": "^15.11.1-preview.1511202107"
+    "enjoy-js": "^15.11.1-preview.1511202107",
+    "vrep": "^1.0.0-final.1512151612"
   },
   "bin": {
     "chibiprint": "./bin/cli.js"
